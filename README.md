@@ -1,6 +1,6 @@
 # Apache2 container with mods and Git
 
-![Travis (.com) branch](https://img.shields.io/travis/com/baskraai/docker-apache-mod-git/master?label=Build%20Master&style=flat-square)
+![Travis (.com) branch](https://img.shields.io/github/workflow/status/baskraai/docker-apache-mod-git/CI?label=Build%20Main&style=flat-square)
 
 This is a container with Apache2, some modules and a Git client for pulling the certificates and config.
 The purpose of this host is a running a loadbalancer-like apache2 instaces with auto-git pulling of config and certificates.
