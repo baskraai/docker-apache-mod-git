@@ -31,7 +31,7 @@ jobs:
         run: docker pull ubuntu:bionic
 
       - name: Build the container
-        run: docker build -t baskraai/apache-mod-git .
+        run: docker build -t baskraai/apache-mod-git:stable .
 
       - name: Push build as most recent
-        run: docker push baskraai/apache-mod-git
+        run: docker push baskraai/apache-mod-git:stable
