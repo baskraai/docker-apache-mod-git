@@ -38,7 +38,7 @@ if [ "${CONFIG_REPO}" == "" ]; then
 else
 	echo_info "Cloning the config from git"
 	cd ~
-	GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone "$CONFIG_REPO" config > /dev/null 2>&1
+	GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone "$CONFIG_REPO" config
 	CONFIG_MOUNT="$(pwd)/config"
 	echo_ok "Cloning config succesful"
 fi
@@ -48,7 +48,7 @@ if [ "${CERT_REPO}" == "" ]; then
 else
 	echo_info "Cloning the certs from git"
 	cd ~
-	GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone "$CERT_REPO" certs > /dev/null 2>&1
+	GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone "$CERT_REPO" certs
 	rsync -aq --copy-links certs/live/* /etc/cert/
 	if [ ! $? ]; then
 		echo_failed "Could not copy <repo>/live directory, does it exist?"
