@@ -39,8 +39,10 @@ else
 	echo_info "Cloning the config from git"
 	cd ~
 	GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone "$CONFIG_REPO" config
-	CONFIG_MOUNT="$(pwd)/config"
 	echo_ok "Cloning config succesful"
+	echo_info "Copying the sites config"
+	rsync -aq config/sites/* /etc/apache2/sites-enabled/
+	echo_ok "Copying config succesful"
 fi
 
 if [ "${CERT_REPO}" == "" ]; then
@@ -58,10 +60,6 @@ else
 	fi
 	echo_ok "Cloning certs and copy to /etc/certs succesful"
 fi
-
-cd "$CONFIG_MOUNT"
-echo_info "Copying the sites config"
-rsync -aq sites/* /etc/apache2/sites-enabled/
 
 echo_info "Checking the config"
 /usr/sbin/apachectl configtest
